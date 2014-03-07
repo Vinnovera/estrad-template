@@ -1,0 +1,18 @@
+{
+  "name": "estrad-template",
+  "version": "0.0.1",
+  "description": "Templating engine for Estrad and node.js",
+  "main": "partials.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "template",
+    "estrad"
+  ],
+  "author": "Per Stenström",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "chalk": "^0.4.0"
+  }
+}
