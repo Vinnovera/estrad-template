@@ -1,6 +1,6 @@
 {
   "name": "estrad-template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Templating engine for Estrad and node.js",
   "main": "partials.js",
   "scripts": {

@@ -2,13 +2,17 @@
 	"use strict";
 
 	var
-		autoload = require("./lib/autoload"),
-		template = require("./lib/template");
+		Autoload = require("./lib/autoload"),
+		Template = require("./lib/template");
 
 	module.exports = Partials;
 
 	function Partials(page, callback) {
-		var func;
+		var
+			autoload = new Autoload(),
+			template = new Template(),
+			func;
+
 		if(typeof page === 'string') {
 			// page is an url
 			func = autoload.loadFile;
