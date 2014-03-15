@@ -13,7 +13,8 @@
   "author": "Per Stenström",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "chalk": "^0.4.0"
+    "chalk": "^0.4.0",
+    "dot": "^1.0.2"
   },
   "repository": {
     "type": "git",
