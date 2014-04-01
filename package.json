@@ -1,6 +1,6 @@
 {
   "name": "estrad-template",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Templating engine for Estrad and node.js",
   "main": "partials.js",
   "scripts": {
@@ -13,7 +13,8 @@
   "author": "Per Stenström",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "chalk": "^0.4.0"
+    "chalk": "^0.4.0",
+    "graceful-fs": "^2.0.3"
   },
   "repository": {
     "type": "git",
