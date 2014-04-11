@@ -5,16 +5,16 @@ var
 
 describe('Estrad Template', function(){
 	var
-		page = new Buffer("<div>foo</div>{{=part.test}}"),
+		page = new Buffer("<div>foo</div>{{=part.test}}{{=part.test}}"),
 		obj  = {
 			folder: 'test/modules'
 		};
 
-	describe('partials()',function(){
+	describe('partials()', function() {
 		it('should interpolate test.html', function(done){
 			partials(page, obj, function(err, content){
 				if(err) throw err;
-				assert.equal("<div>foo</div><div>bar</div>", content);
+				assert.equal("<div>foo</div><div>bar</div><div>bar</div>", content);
 				done();
 			});
 		});
