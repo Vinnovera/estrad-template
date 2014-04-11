@@ -7,11 +7,25 @@
 
 	module.exports = Partials;
 
-	function Partials(page, callback) {
+	function Partials(page, obj, callback) {
 		var
-			autoload = new Autoload(),
+			options  = {
+				folder: 'modules'
+			},
 			template = new Template(),
+			autoload,
 			func;
+
+		// If obj is function use obj as callback
+		if(typeof obj === 'function') {
+			callback = obj;
+
+		// Else extend options with obj
+		} else {
+			options = extend(options, obj);
+		}
+
+		autoload = new Autoload(options);
 
 		if(typeof page === 'string') {
 			// page is an url
@@ -37,5 +51,17 @@
 				callback(null, page);
 			});
 		});
+	}
+
+	function extend(obj, wth) {
+		var i;
+		
+		for(i in wth) {
+			if(wth.hasOwnProperty(i)) {
+				obj[i] = wth[i];
+			}
+		}
+
+		return obj;
 	}
 })();
