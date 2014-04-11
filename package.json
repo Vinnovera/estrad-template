@@ -4,7 +4,7 @@
   "description": "Templating engine for Estrad and node.js",
   "main": "partials.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "template",
@@ -14,7 +14,8 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "chalk": "^0.4.0",
-    "graceful-fs": "^2.0.3"
+    "graceful-fs": "^2.0.3",
+    "dot": "git+https://github.com/Vinnovera/doT.git#c359bf73728f54b4f3de6663446be9778e1da524"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/Vinnovera/estrad-template/issues"
   },
-  "homepage": "https://github.com/Vinnovera/estrad-template"
+  "homepage": "https://github.com/Vinnovera/estrad-template",
+  "devDependencies": {
+    "mocha": "^1.18.2"
+  }
 }
