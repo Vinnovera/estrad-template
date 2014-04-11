@@ -3,7 +3,8 @@
 
 	var
 		Autoload = require("./lib/autoload"),
-		Template = require("./lib/template");
+		Template = require("./lib/template"),
+		doT = require("dot");
 
 	module.exports = Partials;
 
@@ -43,10 +44,13 @@
 			if(err) return callback(err);
 			// Solve dependencies
 			template.solveDependencies(obj, dependees, dependencies, function(err, obj){
-				var page;
+				var page, tmpl;
 				if(err) return callback(err);
 
-				page = template.interpolate(content, obj);
+				doT.templateSettings.varname = 'part';
+				tmpl = doT.template(content);
+				page = tmpl(obj);
+				//page = template.interpolate(content, obj);
 
 				callback(null, page);
 			});
