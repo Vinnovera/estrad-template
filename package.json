@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Vinnovera/estrad-template",
   "devDependencies": {
-    "mocha": "^1.18.2"
+    "mocha": "^1.18.2",
+    "benchmark": "^1.0.0"
   }
 }
