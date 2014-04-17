@@ -10,6 +10,7 @@ describe('Estrad Template', function(){
 		variantPage = new Buffer("<div>foo</div>{{=part.test.sndlvl}}"),
 		undefObjPage = new Buffer("<div>foo</div>{{=part.test.undef}}"),
 		undefPage = new Buffer("<div>foo</div>{{=part.undef}}"),
+		intricatePage = new Buffer("{{=part.intricate}}"),
 		obj  = {
 			folder: 'test/modules'
 		};
@@ -59,6 +60,16 @@ describe('Estrad Template', function(){
 			partials(undefPage, obj, function(err, content){
 				if(err) throw err;
 				assert.equal(content, "<div>foo</div>{{=part.undef}}");
+				done();
+			});
+		});
+	});
+
+	describe('Intricate Page', function() {
+		it('should cover most usecases', function(done){
+			partials(intricatePage, obj, function(err, content){
+				if(err) throw err;
+				assert.equal(content, "<div><div>bar</div><div><div>bar</div></div></div><div>babar</div>foobar");
 				done();
 			});
 		});
