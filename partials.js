@@ -38,11 +38,11 @@
 			return callback(new Error());
 		}
 
-		func(page, function(err, content, result) {
+		func(page, function(err, result) {
 
 			if(err) return callback(err);
 			// Solve dependencies
-			template.solveDependencies(content, result, function(err, page){
+			template.solveDependencies(result, function(err, page){
 				if(err) return callback(err);
 
 				callback(null, page);
