@@ -43,7 +43,7 @@
 
 			if(err) return callback(err);
 			// Solve dependencies
-			template.solveDependencies(result, function(err, obj){
+			template.solveDependencies(content, result, function(err, obj){
 				var page, tmpl;
 				if(err) return callback(err);
 
