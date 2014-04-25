@@ -6,10 +6,10 @@ var
 describe('Estrad Template', function(){
 	var
 		page = new Buffer("<div>foo</div>{{=part.test}}{{=part.test}}"),
-		nestedPage = new Buffer("<div>foo</div>{{=part.sndlvl}}"),
-		variantPage = new Buffer("<div>foo</div>{{=part.test.sndlvl}}"),
-		undefObjPage = new Buffer("<div>foo</div>{{=part.test.undef}}"),
-		undefPage = new Buffer("<div>foo</div>{{=part.undef}}"),
+		nestedPage = new Buffer("<div>{{=part.pfstlvl}}</div>"),
+		variantPage = new Buffer("<div>{{=part.tfstlvl.alt}}</div>"),
+		undefObjPage = new Buffer("<div>{{=part.ufstlvl}}</div>{{!it.bar}}"),
+		undefPage = new Buffer("<div>{{=part.upfstlvl}}</div>{{=part.undef}}"),
 		intricatePage = new Buffer("{{=part.intricate}}"),
 		infinitePage = new Buffer("{{=part.infinite}}"),
 		obj  = {
@@ -30,7 +30,7 @@ describe('Estrad Template', function(){
 		it('should interpolate test.json inside sndlvl/template.html', function(done){
 			partials(nestedPage, obj, function(err, content){
 				if(err) throw err;
-				assert.equal(content, "<div>foo</div><div><div>bar</div></div>");
+				assert.equal(content, "<div><div><div>bar</div></div>bar</div>");
 				done();
 			});
 		});
@@ -40,7 +40,7 @@ describe('Estrad Template', function(){
 		it('should interpolate test.json inside test/sndlvl.json', function(done){
 			partials(variantPage, obj, function(err, content){
 				if(err) throw err;
-				assert.equal(content, "<div>foo</div><div>babar</div>");
+				assert.equal(content, "<div><div>babar</div><span>tsndlvl.alt</span>tfstlvl.alt</div>");
 				done();
 			});
 		});
@@ -50,7 +50,7 @@ describe('Estrad Template', function(){
 		it('should leave the undefined "it" property intact', function(done){
 			partials(undefObjPage, obj, function(err, content){
 				if(err) throw err;
-				assert.equal(content, "<div>foo</div><div>{{!it.bar}}</div>");
+				assert.equal(content, "<div><div><span>{{!it.undef}}</span></div>{{!it.undef.undef}}</div>{{!it.bar}}");
 				done();
 			});
 		});
@@ -60,7 +60,7 @@ describe('Estrad Template', function(){
 		it('should leave the undefined "part" property intact', function(done){
 			partials(undefPage, obj, function(err, content){
 				if(err) throw err;
-				assert.equal(content, "<div>foo</div>{{=part.undef}}");
+				assert.equal(content, "<div><div>{{=part.undef}}</div>{{=part.undef.undef}}</div>{{=part.undef}}");
 				done();
 			});
 		});
