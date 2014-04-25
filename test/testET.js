@@ -11,6 +11,7 @@ describe('Estrad Template', function(){
 		undefObjPage = new Buffer("<div>foo</div>{{=part.test.undef}}"),
 		undefPage = new Buffer("<div>foo</div>{{=part.undef}}"),
 		intricatePage = new Buffer("{{=part.intricate}}"),
+		infinitePage = new Buffer("{{=part.infinite}}"),
 		obj  = {
 			folder: 'test/modules'
 		};
@@ -60,6 +61,16 @@ describe('Estrad Template', function(){
 			partials(undefPage, obj, function(err, content){
 				if(err) throw err;
 				assert.equal(content, "<div>foo</div>{{=part.undef}}");
+				done();
+			});
+		});
+	});
+
+	describe('Infinite Page', function() {
+		it('should not get stuck in an infinite loop', function(done){
+			partials(infinitePage, obj, function(err, content){
+				if(err) throw err;
+				assert.equal(content, "<div>{{=part.infinite}}</div>");
 				done();
 			});
 		});
