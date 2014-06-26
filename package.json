@@ -1,6 +1,6 @@
 {
   "name": "estrad-template",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Templating engine for Estrad and node.js",
   "main": "partials.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "chalk": "^0.4.0",
     "graceful-fs": "^2.0.3",
-    "dot": "git+https://github.com/Vinnovera/doT.git#02ad3da98f9c4b8507bcf32060df220150db4b99"
+    "dot": "git+https://github.com/Vinnovera/doT.git#b1075301f0bc1c4ad6549d55db27bdb186d762f9"
   },
   "repository": {
     "type": "git",

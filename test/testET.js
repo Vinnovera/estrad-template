@@ -1,4 +1,4 @@
-var
+/*var
 	assert = require("assert"),
 	partials = require("../partials");
 
@@ -85,4 +85,4 @@ describe('Estrad Template', function(){
 			});
 		});
 	});
-});
+});*/
