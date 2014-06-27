@@ -15,7 +15,7 @@
   "dependencies": {
     "chalk": "^0.4.0",
     "graceful-fs": "^2.0.3",
-    "dot": "git+https://github.com/Vinnovera/doT.git#35b69b741f00c802043e14449bc43491c7f41847"
+    "dot": "^1.0.2"
   },
   "repository": {
     "type": "git",
