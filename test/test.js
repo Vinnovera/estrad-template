@@ -11,7 +11,8 @@ describe('Estrad Template', function() {
 		nested = new Buffer("<div>{=part.main.module.atom}</div>"),
 		alternative = new Buffer("<div>{=part.main.module.alternative}</div>"),
 		unresolved = new Buffer("<div>{=part.unresolved}</div>"),
-		mixed = new Buffer("<div>{=part.main.mixed}</div>");
+		mixed = new Buffer("<div>{=part.main.mixed}</div>"),
+		infinite = new Buffer("<div>{=part.main.infinite}</div>");
 
 		describe("Basic", function() {
 			it("should interpolate module.json", function(done) {
@@ -40,6 +41,13 @@ describe('Estrad Template', function() {
 			it("should keep unresolved partial", function(done) {
 				partials(unresolved, settings, function(err, content) {
 					assert.equal(content, "<div>{=part.unresolved}</div>");
+					done();
+				});
+			});
+
+			it("should break out of infinite loop", function(done) {
+				partials(infinite, settings, function(err, content) {
+					assert.equal(content, "<div>{=part.main.infinite}</div>");
 					done();
 				});
 			});
