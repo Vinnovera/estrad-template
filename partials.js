@@ -2,6 +2,7 @@
 	"use strict";
 
 	var
+		extend = require("extend"),
 		Autoload = require("./lib/autoload"),
 		Template = require("./lib/template");
 
@@ -10,9 +11,10 @@
 	function Partials(page, obj, callback) {
 		var
 			options  = {
-				folder: 'modules'
+				folder: 'modules',
+				templateSettings: {}
 			},
-			template = new Template(),
+			template,
 			autoload,
 			func;
 
@@ -25,6 +27,7 @@
 			options = extend(options, obj);
 		}
 
+		template = new Template(options);
 		autoload = new Autoload(options);
 
 		if(typeof page === 'string') {
@@ -48,17 +51,5 @@
 				callback(null, page);
 			});
 		});
-	}
-
-	function extend(obj, wth) {
-		var i;
-		
-		for(i in wth) {
-			if(wth.hasOwnProperty(i)) {
-				obj[i] = wth[i];
-			}
-		}
-
-		return obj;
 	}
 })();
