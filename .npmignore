@@ -2,3 +2,5 @@ test/
 benchmark/
 .git*
 .DS_Store
+.jshintrc
+Gulpfile.js
