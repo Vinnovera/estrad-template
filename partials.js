@@ -6,9 +6,7 @@
 		Autoload = require("./lib/autoload"),
 		Template = require("./lib/template");
 
-	module.exports = Partials;
-
-	function Partials(page, obj, callback) {
+	module.exports = function (page, obj, callback) {
 		var
 			options  = {
 				folder: 'modules',
@@ -51,5 +49,5 @@
 				callback(null, page);
 			});
 		});
-	}
+	};
 })();
