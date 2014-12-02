@@ -61,5 +61,14 @@ describe('Estrad Template', function() {
 				done();
 			});
 		});
+
+		it("should solve both versions of module", function(done) {
+			var page = new Buffer("<div>{=part.main.module.alternative}{=part.main.module}</div>");
+
+			partials(page, settings, function(err, content) {
+				assert.equal(content, "<div>foobar</div>");
+				done();
+			});
+		});
 	});
 });
