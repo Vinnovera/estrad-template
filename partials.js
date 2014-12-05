@@ -16,12 +16,12 @@
 			autoload,
 			autoloadFunc;
 
-		// If obj is function use obj as callback
+		// Obj is function use obj as callback
 		if(typeof obj === 'function') {
 			callback = obj;
 		} else {
 
-			// Else extend options with obj
+			// Extend options with obj
 			options = extend(options, obj);
 		}
 

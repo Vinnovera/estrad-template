@@ -10,7 +10,7 @@ describe('Estrad Template', function() {
 		main = new Buffer("<div>{=part.main.module}</div>"),
 		nested = new Buffer("<div>{=part.main.module.atom}</div>"),
 		alternative = new Buffer("<div>{=part.main.module.alternative}</div>"),
-		unresolved = new Buffer("<div>{=part.main.module}{=part.unresolved}</div>"),
+		unresolved = new Buffer("<div>{=part.unresolved}</div>"),
 		mixed = new Buffer("<div>{=part.main.mixed}</div>"),
 		infinite = new Buffer("<div>{=part.main.infinite}</div>");
 
@@ -28,20 +28,13 @@ describe('Estrad Template', function() {
 				done();
 			});
 		});
-
-		it("should interpolate alternative.json", function(done) {
-			partials(alternative, settings, function(err, content) {
-				assert.equal(content, "<div>foo</div>");
-				done();
-			});
-		});
 	});
 
 
 	describe("Error handling", function() {
 		it("should keep unresolved partial", function(done) {
 			partials(unresolved, settings, function(err, content) {
-				assert.equal(content, "<div>bar{=part.unresolved}</div>");
+				assert.equal(content, "<div>{=part.unresolved}</div>");
 				done();
 			});
 		});
@@ -54,7 +47,14 @@ describe('Estrad Template', function() {
 		});
 	});
 	
-	describe("Advanced", function() {
+	describe("Mockdata", function() {
+		it("should interpolate alternative.json", function(done) {
+			partials(alternative, settings, function(err, content) {
+				assert.equal(content, "<div>foo</div>");
+				done();
+			});
+		});
+
 		it("should solve doT and partials", function(done) {
 			partials(mixed, settings, function(err, content) {
 				assert.equal(content, "<div>barstool</div>");
@@ -70,17 +70,7 @@ describe('Estrad Template', function() {
 				done();
 			});
 		});
-	});
 
-	describe("Mockdata", function() {
-		/*it("should interpolate mock data into template", function(done) {
-			var page = new Buffer("<div>{=part.main.module.alternative}{=part.main.module}</div>");
-
-			partials(page, settings, function(err, content) {
-				assert.equal(content, "<div>foobar</div>");
-				done();
-			});
-		});*/
 		it("should not remove undefined mock data", function(done) {
 			var page = new Buffer("{{!it.undefined}}{=part.main.module}");
 
