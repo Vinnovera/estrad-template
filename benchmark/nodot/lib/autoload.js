@@ -115,7 +115,7 @@
 		 */
 		function findPartials(str, callback){
 			var
-				rex = /\{\{=part.([\a\S]+?)\}\}/g,
+				rex = /\{=part.([\a\S]+?)\}/g,
 				matches = [],
 				match;
 

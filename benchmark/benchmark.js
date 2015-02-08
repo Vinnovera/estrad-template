@@ -3,7 +3,7 @@ var
 	suite = new Benchmark.Suite,
 	partials = require("../partials"),
 	nodot = require("./nodot/partials"),
-	page = new Buffer("<div>foo</div>{{=part.test}}");
+	page = new Buffer("<div>foo</div>{=part.test}");
 
 suite
 .add('doT', {

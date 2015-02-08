@@ -59,7 +59,7 @@
 				// its own interpolate and don't use another
 				// templating engine
 				if(typeof obj[keys[i]] === 'undefined') continue;
-				rex = '\\{\\{=part.' + keys[i] + '\\}\\}';
+				rex = '\\{=part.' + keys[i] + '\\}';
 				source = source.replace(new RegExp(rex, 'g'), obj[keys[i]]);
 			}
 
